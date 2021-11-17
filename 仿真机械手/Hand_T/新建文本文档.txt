@@ -1,65 +1,4 @@
 20K
-
-既然你知道基本的藍芽通信，你可以參考以一下我的代碼
-其實藍芽就是無綫串口
-以下代碼是從IDE串口通信發出Axxx，Bxxx，Cxxx信號
-分別控制三顆LED的亮度(xxx為0~255)
-你可以參考它來完成你的接受端
-至於發射端，你想一下如何發出"Axxx,Bxxx"就可以了
-String inString = ""; // string to hold input
-
-
-void setup() {
-// put your setup code here, to run once:
-pinMode(3, OUTPUT);
-pinMode(5, OUTPUT);
-pinMode(6, OUTPUT);
-
-
-Serial.begin(9600);
-}
-
-
-void loop() {
-// put your main code here, to run repeatedly:
-while (Serial.available() > 0) {
-int inChar = Serial.read();
-if ((char)inChar == 'A') {
-do {
-inChar = Serial.read();
-inString += (char)inChar;
-} while (isDigit(inChar));
-analogWrite(3, inString.toInt());
-inString = "";
-}
-if ((char)inChar == 'B') {
-do {
-inChar = Serial.read();
-inString += (char)inChar;
-} while (isDigit(inChar));
-analogWrite(5, inString.toInt());
-inString = "";
-}
-if ((char)inChar == 'C') {
-do {
-inChar = Serial.read();
-inString += (char)inChar;
-} while (isDigit(inChar));
-analogWrite(6, inString.toInt());
-inString = "";
-}
-}
-inString = "";
-delay(200);
-}
-2016/9/1 18:47:46
-─━═到白首ζ 2016/9/1 18:47:46
-既然你知道基本的藍芽通信，你可以參考以一下我的代碼
-其實藍芽就是無綫串口
-以下代碼是從IDE串口通信發出Axxx，Bxxx，Cxxx信號
-分別控制三顆LED的亮度(xxx為0~255)
-你可以參考它來完成你的接受端
-至於發射端，你想一下如何發出"Axxx,Bxxx"就可以了
 String inString = ""; // string to hold input
 
 
@@ -107,13 +46,54 @@ inString = "";
 delay(200);
 }
 
-─━═到白首ζ 2016/9/1 18:48:05
-既然你知道基本的藍芽通信，你可以參考以一下我的代碼
-其實藍芽就是無綫串口
-以下代碼是從IDE串口通信發出Axxx，Bxxx，Cxxx信號
-分別控制三顆LED的亮度(xxx為0~255)
-你可以參考它來完成你的接受端
-至於發射端，你想一下如何發出"Axxx,Bxxx"就可以了
+String inString = ""; // string to hold input
+
+
+void setup() {
+// put your setup code here, to run once:
+pinMode(3, OUTPUT);
+pinMode(5, OUTPUT);
+pinMode(6, OUTPUT);
+
+
+Serial.begin(9600);
+}
+
+
+void loop() {
+// put your main code here, to run repeatedly:
+while (Serial.available() > 0) {
+int inChar = Serial.read();
+if ((char)inChar == 'A') {
+do {
+inChar = Serial.read();
+inString += (char)inChar;
+} while (isDigit(inChar));
+analogWrite(3, inString.toInt());
+inString = "";
+}
+if ((char)inChar == 'B') {
+do {
+inChar = Serial.read();
+inString += (char)inChar;
+} while (isDigit(inChar));
+analogWrite(5, inString.toInt());
+inString = "";
+}
+if ((char)inChar == 'C') {
+do {
+inChar = Serial.read();
+inString += (char)inChar;
+} while (isDigit(inChar));
+analogWrite(6, inString.toInt());
+inString = "";
+}
+}
+inString = "";
+delay(200);
+}
+
+
 String inString = ""; // string to hold input
 
 
